@@ -1,0 +1,24 @@
+{
+  "name": "repay",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "infra:up": "docker compose up -d",
+    "infra:down": "docker compose down",
+    "dev:api": "bun run --filter @repay/api start:dev",
+    "dev:worker": "bun run --filter @repay/api start:dev:worker",
+    "build": "bun run --filter '*' build",
+    "typecheck": "bun run --filter '*' typecheck",
+    "test": "bun run --filter '*' test",
+    "lint": "oxlint apps/ packages/",
+    "format": "prettier --write \"apps/*/src/**/*.ts\" \"apps/*/test/**/*.ts\" \"packages/*/src/**/*.ts\""
+  },
+  "devDependencies": {
+    "oxlint": "^1.58.0",
+    "prettier": "^3.4.2"
+  }
+}
